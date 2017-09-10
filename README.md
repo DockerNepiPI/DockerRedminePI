@@ -1,6 +1,6 @@
 # Redmine Docker Image for Raspbian
 
-This docker image based on [resin/rpi-raspbian](https://hub.docker.com/r/resin/rpi-raspbian/) image from resin and dockerfiles modified from official [redmine](https://hub.docker.com/_/redmine/) repo to build for ARM.
+This docker image based on [resin/rpi-raspbian](https://hub.docker.com/r/resin/rpi-raspbian/) image from resin to build for ARM.
 This build use by default a PostgresSQL server. Docker image builds a redmine with apache2 passenger.
 
 ## Prerequisite
