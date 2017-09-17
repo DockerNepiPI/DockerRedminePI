@@ -40,8 +40,9 @@ After build is complete create a docker container and expose port 80.
 docker run -d -p 80:80 pi/redmine
 ```
 
-After running DokuWiki can be configured by following URL. Default username is 'admin' and password is 'admin'.
-  - www.DockerIP/redmine/
+After running DokuWiki can be configured by following URL (www.DockerIP). 
+Default username is 'admin' and password is 'admin'.
+To change URL redmine.conf must be changed because main root is linked to /var/www/html/redmine/.
 
 ## License
 
