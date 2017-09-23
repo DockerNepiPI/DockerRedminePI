@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM debian:stretch
 MAINTAINER Andreas Sekulski <andreas.sekulski@gmail.com>
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
@@ -6,7 +6,7 @@ RUN groupadd -r redmine && useradd -r -g redmine redmine
 
 # Install dependencies
 RUN apt-get update \
-      && apt-get install gcc build-essential zlib1g zlib1g-dev zlibc ruby-zip libssl-dev libyaml-dev libcurl4-openssl-dev ruby gem libapache2-mod-passenger apache2-mpm-prefork apache2-dev libapr1-dev libxslt1-dev checkinstall libxml2-dev ruby-dev vim libmagickwand-dev imagemagick wget postgresql-client postgresql-client-common postgresql-contrib libpq-dev \
+      && apt-get install apache2 libapache2-mod-passenger libpq-dev nano wget ruby ruby-dev build-essential libmagickwand-dev imagemagick -y \
       && wget https://www.redmine.org/releases/redmine-3.4.2.tar.gz \
       && tar xfvz redmine-3.4.2.tar.gz \
       && rm redmine-3.4.2.tar.gz \
@@ -42,9 +42,9 @@ RUN a2dissite 000-default.conf \
       && a2ensite redmine.conf \
       && service apache2 restart
 
-VOLUME /var/lib/redmine/files
+VOLUME ["/var/lib/redmine/files", "/var/lib/redmine/plugins"]
 
-EXPOSE 443 80
+EXPOSE 80
 
 ADD docker-entypoint.sh /docker-entypoint.sh
 RUN chmod +x /docker-entypoint.sh
