@@ -1,7 +1,6 @@
 # Redmine Docker Image for Raspbian
 
-This docker image based on [resin/rpi-raspbian](https://hub.docker.com/r/resin/rpi-raspbian/) image from resin to build for ARM.
-This build use by default a PostgresSQL server. Docker image builds a redmine with apache2 passenger.
+This docker container based on debian stretch. This build use by default a PostgresSQL server. Docker image builds a redmine with apache2 passenger.
 
 ## Prerequisite
 
@@ -15,7 +14,7 @@ git clone https://github.com/Nepitwin/DockerRedminePI.git
 cd DockerRedminePI
 ```
 
-Before you build your container modify database.yml with correct databas credentiels.
+Before you build your container create a database.yml with correct database credentials.
 
 ```
 production:
@@ -40,7 +39,7 @@ After build is complete create a docker container and expose port 80.
 docker run -d -p 80:80 pi/redmine
 ```
 
-After running DokuWiki can be configured by following URL (www.DockerIP). 
+After running DokuWiki can be configured by following URL (www.DockerIP/). 
 Default username is 'admin' and password is 'admin'.
 To change URL redmine.conf must be changed because main root is linked to /var/www/html/redmine/.
 
