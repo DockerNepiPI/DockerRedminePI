@@ -7,10 +7,10 @@ RUN groupadd -r redmine && useradd -r -g redmine redmine
 # Install dependencies
 RUN apt-get update \
       && apt-get install apache2 libapache2-mod-passenger libpq-dev nano wget ruby ruby-dev build-essential libmagickwand-dev imagemagick -y \
-      && wget https://www.redmine.org/releases/redmine-3.4.2.tar.gz \
-      && tar xfvz redmine-3.4.2.tar.gz \
-      && rm redmine-3.4.2.tar.gz \
-      && mv redmine-3.4.2 /var/lib/redmine
+      && wget https://www.redmine.org/releases/redmine-3.4.9.tar.gz \
+      && tar xfvz redmine-3.4.9.tar.gz \
+      && rm redmine-3.4.9.tar.gz \
+      && mv redmine-3.4.9 /var/lib/redmine
 
 ADD database.yml /var/lib/redmine/config/database.yml
 
