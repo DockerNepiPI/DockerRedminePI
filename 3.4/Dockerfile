@@ -16,7 +16,7 @@ ADD database.yml /var/lib/redmine/config/database.yml
 
 WORKDIR /var/lib/redmine
 
-RUN gem install bundler \
+RUN gem install bundler -v 1.17.3 \
       && bundle install --without development test \
       && bundle exec rake generate_secret_token
 
@@ -42,7 +42,7 @@ RUN a2dissite 000-default.conf \
       && a2ensite redmine.conf \
       && service apache2 restart
 
-VOLUME ["/var/lib/redmine/files", "/var/lib/redmine/plugins"]
+VOLUME ["/var/lib/redmine/files", "/var/lib/redmine/plugins", "/var/lib/redmine/config/"]
 
 EXPOSE 80
 
